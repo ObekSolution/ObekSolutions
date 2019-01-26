@@ -72,6 +72,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CAD\OperacionesBBDD.cs" />
+    <Compile Include="Common\UsuarioFiltro.cs" />
+    <Compile Include="Common\Usuario.cs" />
     <Compile Include="Formularios\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

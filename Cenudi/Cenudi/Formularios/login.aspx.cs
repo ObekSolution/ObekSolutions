@@ -5,25 +5,54 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
+using Cenudi.Common;
+using Cenudi.CAD;
 
 namespace Cenudi.Formularios
 {
     public partial class login : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+        //Metodos
 
+        /// <summary>
+        /// Metodo que se encarga de realizar el proceso de login
+        /// </summary>
+        private void Login(UsuarioFiltro usuFiltro) {
+
+            var operaciones = new OperacionesBBDD();
+
+            if (operaciones.Login(usuFiltro))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "alert('Al pelo hermano');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "displayalertmessage", "alert('Datos de usuario erroneos')", true);
+            }
         }
 
-        protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
-        {
-            MySqlConnection Conectar = new MySqlConnection("server=databases.000webhost.com; database=id8167586_obek;Uid=id8167586_obek;pwd=1488.1488; ");
-            Conectar.Open();
 
-            MySqlCommand codigo = new MySqlCommand();
-            MySqlConnection conectarse = new MySqlConnection();
-            codigo.Connection = Conectar;
-            codigo.CommandText = ("Select * From Usuarios Where Nombre ='"as"' ");
+        ////Eventos
+
+        /// <summary>
+        /// Evento cuando pulsamos sobre el botón de login.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            UsuarioFiltro usuFiltro = new UsuarioFiltro();
+            if ((txtUsuario.Text != string.Empty) && (txtPassword.Text != string.Empty))
+            {
+                usuFiltro.nombre = txtUsuario.Text;
+                usuFiltro.password = txtPassword.Text;
+                Login(usuFiltro);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "displayalertmessage", "alert('Debe rellenar ambos campos')", true);
+            }
         }
+
     }
 }
