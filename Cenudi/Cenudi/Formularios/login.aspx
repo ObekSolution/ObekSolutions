@@ -11,7 +11,6 @@
         
         <asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <br />
         <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
         <br />
