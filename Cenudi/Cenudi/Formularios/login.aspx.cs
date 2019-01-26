@@ -17,13 +17,13 @@ namespace Cenudi.Formularios
 
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
         {
-            MySqlConnection Conectar = new MySqlConnection("server=; database=;Uid=;pwd=1488.1488; ");
+            MySqlConnection Conectar = new MySqlConnection("server=databases.000webhost.com; database=id8167586_obek;Uid=id8167586_obek;pwd=1488.1488; ");
             Conectar.Open();
 
             MySqlCommand codigo = new MySqlCommand();
             MySqlConnection conectarse = new MySqlConnection();
             codigo.Connection = Conectar;
-            //codigo.CommandText = ("Select * From Usuarios Where Nombre =  ");
+            codigo.CommandText = ("Select * From Usuarios Where Nombre ='"as"' ");
         }
     }
 }
